@@ -1,7 +1,7 @@
 #Description: This file is the main file of the program. It shows the menu and calls the functions from the other file.
 #Author: Jose Alexander Sotelo Opayome
 #I import my functions from another file
-import Functions as fn
+import functions as fn
 tasks = []
 #I show different options for the cx to interact 
 print("""---MENÚ---
