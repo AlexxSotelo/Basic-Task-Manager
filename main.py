@@ -4,27 +4,32 @@
 import functions as fn
 tasks = []
 #I show different options for the cx to interact 
-print("""---MENÚ---
-1. Añadir tarea
-2. Marcar tarea como completada
-3. Ver lista de tareas
-4. Salir
-""")
-while True:
-    try:
-        option = int(input("ELige una opción: "))
-        if option == 1:
-            #I call the function from the other file
-            fn.add_task(tasks)
-        elif option == 2:
-            fn.complete_task(tasks)
-        elif option == 3:
-            print(fn.show_tasks(tasks))
-        elif option == 4:
-            print("Gracias por usar TaskManager.")
-            break
-        #I raise a new restriction to void missunderstandings
-        else:
-            raise ValueError("Ingrese una opción correcta.")
-    except ValueError:
-        print("El valor ingresado es incorrecto. Por favor, introduce un número válido.")
+def main():
+    print("""---MENÚ---
+    1. Añadir tarea
+    2. Marcar tarea como completada
+    3. Ver lista de tareas
+    4. Salir
+    """)
+    while True:
+        try:
+            option = int(input("ELige una opción: "))
+            if option == 1:
+                #I call the function from the other file
+                fn.add_task(tasks)
+            elif option == 2:
+                fn.complete_task(tasks)
+            elif option == 3:
+                return fn.show_tasks(tasks)
+            elif option == 4:
+                return "Gracias por usar TaskManager."
+                break
+            #I raise a new restriction to void missunderstandings
+            else:
+                raise ValueError("Ingrese una opción correcta.")
+        except ValueError:
+            return "El valor ingresado es incorrecto. Por favor, introduce un número válido."
+
+if __name__ == "__main__":
+    main()
+
