@@ -20,15 +20,15 @@ def main():
             elif option == 2:
                 fn.complete_task(tasks)
             elif option == 3:
-                return fn.show_tasks(tasks)
+                fn.show_tasks(tasks)
             elif option == 4:
-                return "Gracias por usar TaskManager."
+                print("Gracias por usar TaskManager.")
                 break
             #I raise a new restriction to void missunderstandings
             else:
                 raise ValueError("Ingrese una opción correcta.")
         except ValueError:
-            return "El valor ingresado es incorrecto. Por favor, introduce un número válido."
+            print("El valor ingresado es incorrecto. Por favor, introduce un número válido.")
 
 if __name__ == "__main__":
     main()
