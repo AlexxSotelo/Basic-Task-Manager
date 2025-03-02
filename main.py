@@ -20,7 +20,7 @@ def main():
             elif option == 2:
                 fn.complete_task(tasks)
             elif option == 3:
-                fn.show_tasks(tasks)
+                print(fn.show_tasks(tasks))
             elif option == 4:
                 print("Gracias por usar TaskManager.")
                 break

@@ -22,16 +22,11 @@ def complete_task(tasks:list)->list:
     else:
         print("Esta tarea no se encuentra en la lista.") 
 #Third function: show_tasks
-def show_tasks(tasks:list)->str:
-    print("Lista de tareas:")
-    #I create a string to store the tasks
-    result = ""
-    #I check if there are tasks
+def show_tasks(tasks: list) -> str:
+    """Devuelve una lista de tareas numeradas en formato de string."""
     if not tasks:
         return "No hay tareas añadidas aún."
-    #I get the tasks with their numeration
-    for i, task in enumerate(tasks, 1):
-        #I add the task to the string
-        result += f"{i}. {task}\n"
-    #I return and remove the last line break
-    return result.strip()
+    
+    # Construcción eficiente del resultado con join()
+    result = "\n".join(f"{i}. {task}" for i, task in enumerate(tasks, 1))
+    return result
