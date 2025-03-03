@@ -1,35 +1,40 @@
-#Description: This file is the main file of the program. It shows the menu and calls the functions from the other file.
-#Author: Jose Alexander Sotelo Opayome
-#I import my functions from another file
-import functions as fn
-tasks = []
-#I show different options for the cx to interact 
-def main():
-    print("""---MENÚ---
-    1. Añadir tarea
-    2. Marcar tarea como completada
-    3. Ver lista de tareas
-    4. Salir
-    """)
-    while True:
-        try:
-            option = int(input("ELige una opción: "))
-            if option == 1:
-                #I call the function from the other file
-                fn.add_task(tasks)
-            elif option == 2:
-                fn.complete_task(tasks)
-            elif option == 3:
-                print(fn.show_tasks(tasks))
-            elif option == 4:
-                print("Gracias por usar TaskManager.")
-                break
-            #I raise a new restriction to void missunderstandings
-            else:
-                raise ValueError("Ingrese una opción correcta.")
-        except ValueError:
-            print("El valor ingresado es incorrecto. Por favor, introduce un número válido.")
+from flask import Flask, render_template, request, redirect, url_for
+import functions as fn  # Asegúrate de que este archivo existe y está en la misma carpeta
+
+
+app = Flask(__name__)
+tasks = []  # Lista para almacenar las tareas
+
+@app.route("/")
+def index():
+    return render_template("index.html", tasks=tasks)
+
+@app.route("/add", methods=["POST"])
+def add_task():
+    task_name = request.form.get("task", "").strip()
+    
+    if not task_name:
+        return "Error: No ingresaste una tarea.", 400
+
+    fn.add_task(tasks, task_name)
+    return redirect(url_for("index"))
+
+@app.route("/complete/<int:task_id>")
+def complete_task(task_id):
+    """Marca una tarea como completada."""
+    if 0 <= task_id < len(tasks):  # Validación para evitar errores de índice
+        fn.complete_task(tasks, task_id)
+    else:
+        app.logger.warning(f"Intento de completar tarea inexistente con ID {task_id}")
+    
+    return redirect(url_for("index"))
+
+@app.route("/clear", methods=["POST"])
+def clear():
+    fn.clear_tasks(tasks)
+    return redirect(url_for("index"))
+
+
 
 if __name__ == "__main__":
-    main()
-
+    app.run(debug=True)
