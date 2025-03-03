@@ -20,6 +20,7 @@ body {
 nav {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     background-color: rgba(28, 28, 30, 0.9);
     padding: 15px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -49,7 +50,8 @@ nav {
 
 /* Contenedor principal */
 main {
-    max-width: 400px;
+    max-width: 90%;
+    width: 400px;
     margin: 50px auto;
     background: #2c2c2e;
     padding: 20px;
@@ -122,6 +124,7 @@ button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    word-break: break-word;
 }
 
 .task-list a {
@@ -151,4 +154,37 @@ form[action="/clear"] button {
 
 form[action="/clear"] button:hover {
     background-color: #d63030;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    main {
+        width: 95%;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    input[type="text"] {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .task-list li {
+        padding: 8px 12px;
+    }
+}
+
+@media (min-width: 768px) {
+    main {
+        max-width: 600px;
+    }
 }
