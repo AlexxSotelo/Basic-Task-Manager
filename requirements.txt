@@ -120,7 +120,6 @@ pytest==8.3.4
 python-dateutil==2.9.0.post0
 pytz==2024.1
 pyunormalize==16.0.0
-pywin32==305
 pyzmq==26.0.3
 rapidfuzz==3.9.7
 referencing==0.35.1
