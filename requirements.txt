@@ -85,7 +85,7 @@ multidict==6.1.0
 nbformat==5.10.4
 nest-asyncio==1.6.0
 networkx==3.3
-numpy==2.0.1
+numpy
 opencv-python==4.10.0.84
 packaging==24.1
 pandas==2.2.2
@@ -120,7 +120,7 @@ pytest==8.3.4
 python-dateutil==2.9.0.post0
 pytz==2024.1
 pyunormalize==16.0.0
-pywin32==306
+pywin32
 pyzmq==26.0.3
 rapidfuzz==3.9.7
 referencing==0.35.1
