@@ -7,11 +7,18 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <header>
-        <h1>Task Manager</h1>
-    </header>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+            <span>Alex Sotelo</span>
+        </div>
+    </nav>
 
     <main>
+        <h1>Task Manager</h1>
+
         <section class="task-form">
             <form action="/add" method="POST">
                 <label for="task">Nueva tarea:</label>
@@ -34,7 +41,6 @@
                     </li>
                 {% endfor %}
             </ul>
-            
         </section>
         {% else %}
         <p class="no-tasks">No hay tareas aún. ¡Añade una!</p>
@@ -43,7 +49,7 @@
         <form action="/clear" method="POST">
             <button type="submit">Vaciar lista</button>
         </form>
-        
     </main>
+
 </body>
 </html>
